@@ -26,7 +26,7 @@ public class LaunchServerEvent extends Event {
         this("FRA1",
                 "debian-10-x64",
                 "userdata.sh",
-                4,
+                4000,
                 uuid,
                 (id) -> {},
                 (id,error) -> {});
