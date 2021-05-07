@@ -31,7 +31,11 @@ public class Start extends Command {
 
         main.setCurrentGame(game);
 
-        LaunchServerEvent event = new LaunchServerEvent(game);
+        LaunchServerEvent event = new LaunchServerEvent(
+                game,
+                (u) -> sender.sendMessage(new TextComponent("§6Ph1Lou §b»§f Le serveur est disponible")),
+                (u,e) -> sender.sendMessage(new TextComponent("§6Ph1Lou §b»§f Le démarrage du serveur a échoué")));
+
         main.getProxy().getPluginManager().callEvent(event);
 
         if(event.hasFail()){

@@ -48,3 +48,8 @@ getProxy().getPluginManager().callEvent(launchServerEvent);
 ```
 getProxy().getPluginManager().callEvent(new CloseServerEvent(serverUuid));
 ```
+
+5. Installation Maven / Gradle
+
+<https://jitpack.io/#Ph1Lou/CoffeeDispenser>
+

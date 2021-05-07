@@ -22,14 +22,14 @@ public class LaunchServerEvent extends Event {
     private final Map<String,String> values = new HashMap<>();
     private boolean fail = false;
 
-    public LaunchServerEvent(UUID uuid){
+    public LaunchServerEvent(UUID uuid,Consumer<UUID> onSuccess, BiConsumer<UUID, Reason> onFailed){
         this("FRA1",
                 "debian-10-x64",
                 "userdata.sh",
                 3000,
                 uuid,
-                (id) -> {},
-                (id,error) -> {});
+                onSuccess,
+                onFailed);
     }
 
     public LaunchServerEvent(String region,
