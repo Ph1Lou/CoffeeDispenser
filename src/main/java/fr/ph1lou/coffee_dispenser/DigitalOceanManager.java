@@ -24,7 +24,10 @@ import org.apache.http.impl.client.HttpClients;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -96,7 +99,7 @@ public class DigitalOceanManager {
 
         Droplet droplet = new Droplet();
         String script = FilesUtils.loadContent(main,scriptName);
-        script = script.replace("&ram&",String.valueOf(size.getRam()));
+        script = script.replace("&ram&",String.valueOf(ram));
         script = script.replace("&bungee_ip&", bungeeIp);
         script = script.replace("&uuid&", uuid.toString());
         for(String key:values.keySet()){
@@ -154,7 +157,10 @@ public class DigitalOceanManager {
     }
 
     public void clearAllDroplets() {
-        dropletIds.keySet().forEach(this::deleteDroplet);
+        List<UUID> uuids = new ArrayList<>(this.dropletIds.keySet());
+        for (UUID uuid : uuids) {
+            this.deleteDroplet(uuid);
+        }
     }
 
 
